@@ -26,6 +26,8 @@ class ListAdapter(private val taskViewModel: TaskViewModel): RecyclerView.Adapte
         val rowLayout: ConstraintLayout = binding.rowLayout
         val checkBox: CheckBox = binding.checkBox
 
+        // mali
+
         fun bind(task: Task){
             binding.apply {
                 checkBox.isChecked = task.isCompleted
