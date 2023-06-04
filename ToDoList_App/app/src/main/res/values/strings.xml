@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ToDoList_App</string>
+    <string name="enter_title">Enter the title</string>
+    <string name="enter_subject">Enter the subject</string>
+    <string name="button_create">Create</string>
+    <string name="priority_text">Priority: </string>
+    <string name="button_update">Update</string>
+    <string name="check_box_text">Completed</string>
+    <string-array name="spinner_items">
+        <item>High</item>
+        <item>Low</item>
+        <item>Crucial</item>
+    </string-array>
+    <string name="empty" />
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

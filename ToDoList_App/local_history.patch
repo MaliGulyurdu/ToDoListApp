@@ -1,0 +1,17 @@
+Index: app/src/main/java/com/example/todolist_app/data/TaskDao.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/todolist_app/data/TaskDao.kt b/app/src/main/java/com/example/todolist_app/data/TaskDao.kt
+--- a/app/src/main/java/com/example/todolist_app/data/TaskDao.kt	
++++ b/app/src/main/java/com/example/todolist_app/data/TaskDao.kt	(date 1685619787895)
+@@ -15,7 +15,7 @@
+     suspend fun addTask(task: Task)
+ 
+     @Update
+-    suspend fun updateTask()
++    suspend fun updateTask(task: Task)
+ 
+     @Query("SELECT * FROM task_data ORDER BY queue ASC") // As you can see, data's sorting by 'queue' values. Ranking from small to large.
+     // * -> Return all information of task_data
