@@ -17,8 +17,10 @@ interface TaskDao {
     @Update
     suspend fun updateTask(task: Task)
 
-    @Query("SELECT * FROM task_data ORDER BY queue ASC") // As you can see, data's sorting by 'queue' values. Ranking from small to large.
+    @Query("SELECT * FROM task_data ORDER BY isCompleted ASC, queue ASC") // As you can see, data's sorting by 'queue' values. Ranking from small to large.
     // * -> Return all information of task_data
     // If you write something like 'name' instead of '*' that will just return names.
+
+
     fun readAllData(): LiveData<List<Task>>
 }

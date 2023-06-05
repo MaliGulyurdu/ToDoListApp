@@ -2,18 +2,17 @@ package com.example.todolist_app.fragments.add
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.todolist_app.R
+import com.example.todolist_app.databinding.FragmentAddBinding
 import com.example.todolist_app.model.Task
 import com.example.todolist_app.viewmodel.TaskViewModel
-import com.example.todolist_app.databinding.FragmentAddBinding
 
 class AddFragment : Fragment() {
 
@@ -24,10 +23,10 @@ class AddFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAddBinding.inflate(inflater, container, false)
 
-        taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+        taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
 
         binding.btnAddTask.setOnClickListener {
             insertDataToDatabase()

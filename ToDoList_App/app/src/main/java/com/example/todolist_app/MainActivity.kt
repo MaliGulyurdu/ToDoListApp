@@ -1,9 +1,7 @@
 package com.example.todolist_app
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.appcompat.app.AppCompatActivity
 import com.example.todolist_app.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

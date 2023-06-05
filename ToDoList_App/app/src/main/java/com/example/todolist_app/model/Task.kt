@@ -3,7 +3,6 @@ package com.example.todolist_app.model
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.versionedparcelable.VersionedParcelize
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -18,3 +17,5 @@ data class Task(
     val subject: String,
     var isCompleted: Boolean
 ): Parcelable
+
+
