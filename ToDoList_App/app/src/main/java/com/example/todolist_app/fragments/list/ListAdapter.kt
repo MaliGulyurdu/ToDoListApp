@@ -7,12 +7,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist_app.model.Task
 import com.example.todolist_app.databinding.CustomRowBinding
 import com.example.todolist_app.viewmodel.TaskViewModel
+import java.security.Provider
 
 class ListAdapter(private val taskViewModel: TaskViewModel): RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
@@ -26,23 +29,20 @@ class ListAdapter(private val taskViewModel: TaskViewModel): RecyclerView.Adapte
         val idTxt: TextView = binding.idTxt
         val rowLayout: ConstraintLayout = binding.rowLayout
         val checkBox: CheckBox = binding.checkBox
-
         // Checkbox update
-
         fun bind(task: Task){
             binding.apply {
                 checkBox.isChecked = task.isCompleted
                 checkBox.setOnCheckedChangeListener { _, isChecked ->
                     task.isCompleted = isChecked
-                    // O anlık görünüm değişimi
                     titleTxt.paintFlags = if (task.isCompleted) Paint.STRIKE_THRU_TEXT_FLAG else 0
                     subjectTxt.paintFlags = if (task.isCompleted) Paint.STRIKE_THRU_TEXT_FLAG else 0
                     taskViewModel.updateTask(task)
                 }
             }
         }
-
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
@@ -50,7 +50,6 @@ class ListAdapter(private val taskViewModel: TaskViewModel): RecyclerView.Adapte
         val inflater = LayoutInflater.from(parent.context)
         val binding = CustomRowBinding.inflate(inflater, parent, false)
         return MyViewHolder(binding,taskViewModel)
-
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -68,16 +67,18 @@ class ListAdapter(private val taskViewModel: TaskViewModel): RecyclerView.Adapte
 
         // Change background color of custom rows according to priority.
         when(task.priority){
-            "Low" -> holder.itemView.setBackgroundColor(Color.rgb(120, 196,190))
-            "High" -> holder.itemView.setBackgroundColor(Color.rgb(198, 141, 201))
-            "Crucial" -> holder.itemView.setBackgroundColor(Color.rgb(230,57,96))
+            "Low" -> holder.itemView.setBackgroundColor(Color.rgb(173, 216, 230))
+            "High" -> holder.itemView.setBackgroundColor(Color.rgb(255, 165, 0))
+            "Crucial" -> holder.itemView.setBackgroundColor(Color.rgb(220, 20, 60))
             else -> holder.itemView.setBackgroundColor(Color.WHITE)
         }
 
         // Click current item (Custom Row items) to go update fragment scene
         holder.rowLayout.setOnClickListener {
+            if(!holder.checkBox.isChecked){ // UX Update
             val action = ListFragmentDirections.actionListFragmentToUpdateFragment(task)
             holder.itemView.findNavController().navigate(action)
+            }
         }
     }
     @SuppressLint("NotifyDataSetChanged")

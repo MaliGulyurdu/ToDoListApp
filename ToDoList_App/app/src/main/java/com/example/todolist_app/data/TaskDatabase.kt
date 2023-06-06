@@ -8,7 +8,6 @@ import com.example.todolist_app.model.Task
 
 @Database(entities = [Task::class], version = 1, exportSchema = false)
 abstract class TaskDatabase: RoomDatabase() {
-
     abstract fun taskDao(): TaskDao
     companion object{
         @Volatile
@@ -31,3 +30,4 @@ abstract class TaskDatabase: RoomDatabase() {
         }
     }
 }
+

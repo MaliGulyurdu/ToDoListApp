@@ -32,5 +32,5 @@ class TaskViewModel(application: Application): AndroidViewModel(application) {
             repository.updateTask(task)
         }
     }
-
 }
+

@@ -2,6 +2,7 @@ package com.example.todolist_app.fragments.update
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,7 +36,7 @@ class UpdateFragment : Fragment() {
         val updatedItem = args.currentTask.priority
         val updatedItemPosition = spinnerItems.indexOf(updatedItem)
 
-        // Show updated data on the fragment
+        // Show current data on the fragment
         binding.updateTitleEditText.setText(args.currentTask.title)
         binding.updateSubjectEditText.setText(args.currentTask.subject)
         binding.updateSpinner.setSelection(updatedItemPosition)
@@ -54,8 +55,7 @@ class UpdateFragment : Fragment() {
 
         if (inputCheck(newSubject,newTitle,newPriority)){
             // Create "Task" object
-            val updatedTask = Task(args.currentTask.queue,newPriority,newSubject,newTitle,false)
-
+            val updatedTask = Task(args.currentTask.queue,newPriority,newTitle,newSubject,false)
             // Update current object
             taskViewModel.updateTask(updatedTask)
             Toast.makeText(requireContext(), "Task updated successfully!", Toast.LENGTH_LONG).show()

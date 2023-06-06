@@ -31,11 +31,8 @@ class AddFragment : Fragment() {
         binding.btnAddTask.setOnClickListener {
             insertDataToDatabase()
         }
-
-
         return binding.root
     }
-
     private fun insertDataToDatabase(){
         val priorityRate:String = binding.spinner.selectedItem.toString()
         val subject:String = binding.subjectEditText.text.toString()
@@ -50,19 +47,11 @@ class AddFragment : Fragment() {
             // Navigate back
             findNavController().navigate(R.id.action_addFragment_to_listFragment)
         }
-
             else {
                 Toast.makeText(requireContext(), "Please fill out all fields.",Toast.LENGTH_LONG).show()
             }
-
-    // Log.d("inputs","Rate: $priorityRate Title: $title Subject: $subject Status: Open")
-
     }
-
     private fun inputCheck(subject:String, title: String, priorityRate: String): Boolean{
         return !(TextUtils.isEmpty(subject) || TextUtils.isEmpty(title) || TextUtils.isEmpty(priorityRate))
     }
-
-
-
 }
